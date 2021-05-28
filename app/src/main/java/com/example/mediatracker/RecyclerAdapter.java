@@ -8,13 +8,13 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
-    private String[] albumName = {"Big Wave", "After 5 Clash", "Big Wave", "After 5 Clash",
-            "Big Wave", "After 5 Clash", "Big Wave", "After 5 Clash"};
+    private String[] albumName = {"Big Wave", "After 5 Clash", "Kind Of Blue", "Bobby Caldwell",
+            "Street Songs", "Gunfighter Ballads and Trailsongs"};
 
-    private String[] artist = {"Tatsuro Yamashita", "Toshiki Kadomatsu", "Tatsuro Yamashita",
-            "Toshiki Kadomatsu", "Tatsuro Yamashita", "Toshiki Kadomatsu", "Tatsuro Yamashita", "Toshiki Kadomatsu"};
+    private String[] artist = {"Tatsuro Yamashita", "Toshiki Kadomatsu", "Miles Davis",
+            "Bobby Caldwell", "Rick James", "Marty Robbins"};
 
-    private String[] format = {"CD", "LP", "CD", "LP", "CD", "LP", "CD", "LP"};
+    private String[] format = {"CD", "LP", "LP", "LP", "LP", "LP"};
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
