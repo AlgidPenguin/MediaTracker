@@ -1,18 +1,33 @@
 package com.example.mediatracker;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "Albums")
 public class Album {
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "albumId")
+    private int id;
+
     private String title;
     private String artist;
     private String format;
-    private int count;
+    // private int count;
     private int runtime;
 
-    public Album(String title, String artist, String format, int count, int runtime) {
+    public Album(String title, String artist, String format, int runtime) {
+        this.id = id;
         this.title = title;
         this.artist = artist;
         this.format = format;
-        this.count = count;
+        // this.count = count;
         this.runtime = runtime;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     void setTitle(String title) {
@@ -27,13 +42,13 @@ public class Album {
         this.format = format;
     }
 
-    void setCount(int count) {
-        this.count = count;
-    }
+    //void setCount(int count) { this.count = count;}
 
     void setRuntime(int runtime) {
         this.runtime = runtime;
     }
+
+    int getId() { return id; }
 
     String getTitle() {
         return title;
@@ -47,9 +62,7 @@ public class Album {
         return format;
     }
 
-    int getCount() {
-        return count;
-    }
+    //int getCount() {return count;}
 
     int getRuntime() {
         return runtime;

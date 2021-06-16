@@ -7,14 +7,20 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
-    private String[] albumName = {"Big Wave", "After 5 Clash", "Kind Of Blue", "Bobby Caldwell",
-            "Street Songs", "Gunfighter Ballads and Trailsongs"};
+//    private String[] albumName = {"Big Wave", "After 5 Clash", "Kind Of Blue", "Bobby Caldwell",
+//            "Street Songs", "Gunfighter Ballads and Trailsongs"};
+//
+//    private String[] artist = {"Tatsuro Yamashita", "Toshiki Kadomatsu", "Miles Davis",
+//            "Bobby Caldwell", "Rick James", "Marty Robbins"};
+//
+//    private String[] format = {"CD", "LP", "LP", "LP", "LP", "LP"};
 
-    private String[] artist = {"Tatsuro Yamashita", "Toshiki Kadomatsu", "Miles Davis",
-            "Bobby Caldwell", "Rick James", "Marty Robbins"};
+    private List<Album> albumList;
 
-    private String[] format = {"CD", "LP", "LP", "LP", "LP", "LP"};
+
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
@@ -25,13 +31,24 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     }
 
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
-        viewHolder.itemTitle.setText(albumName[i]);
-        viewHolder.itemArtist.setText(artist[i]);
-        viewHolder.itemFormat.setText(format[i]);
+        viewHolder.itemTitle.setText(albumList.get(i).getTitle());
+        viewHolder.itemArtist.setText(albumList.get(i).getArtist());
+        viewHolder.itemFormat.setText(albumList.get(i).getFormat());
     }
 
     public int getItemCount() {
-        return albumName.length;
+        if(albumList == null) {
+            return 0;
+        }
+
+        else {
+            return albumList.size();
+        }
+    }
+
+    public void setAlbumList(List<Album> albums) {
+        albumList = albums;
+        notifyDataSetChanged();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
