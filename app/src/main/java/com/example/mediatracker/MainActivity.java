@@ -6,13 +6,15 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.mediatracker.RecyclerAdapter;
+
 import java.util.List;
-import java.util.Locale;
 
 import androidx.lifecycle.Observer;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.Adapter adapter;
 
 
-
+    private Button openAddActivity;
     private TextView albumTitle;
     private TextView albumArtist;
     private TextView albumFormat;
@@ -32,9 +34,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        openAddActivity = findViewById(R.id.addActivityButton);
+        openAddActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toAddActivity();
+            }
+        });
+
         albumViewModel = new ViewModelProvider(this).get(AlbumViewModel.class);
-        Album tatsuro = new Album("Big Wave", "Tatsuro Yamashita", "CD", 83);
-        albumViewModel.addAlbum(tatsuro);
+        albumViewModel.deleteAlbum(7);
+        //Album tatsuro = new Album("Big Wave", "Tatsuro Yamashita", "CD", 83);
+        //albumViewModel.addAlbum(tatsuro);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -50,16 +61,17 @@ public class MainActivity extends AppCompatActivity {
         albumArtist = findViewById(R.id.album_artist);
         albumFormat = findViewById(R.id.album_format);
 
-        albumViewModel.getAlbums().observe(this, new Observer<List<Album>>() {
+        albumViewModel.getAlbumsLive().observe(this, new Observer<List<Album>>() {
             @Override
             public void onChanged(@Nullable final List<Album> albums) {
                 recyclerAdapter.setAlbumList(albums);
             }
         });
-
-
 //        listenerSetup();
-//        recyclerSetup();
     }
 
+    public void toAddActivity() {
+        Intent intent = new Intent(this, AddAlbumActivity.class);
+        startActivity(intent);
+    }
 }

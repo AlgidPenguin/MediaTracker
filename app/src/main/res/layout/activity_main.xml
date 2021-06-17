@@ -38,6 +38,14 @@
                 android:layout_marginTop="10dp"
                 android:text="@string/media_tracker"
                 android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/addActivityButton"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="335dp"
+                app:icon="@android:drawable/ic_input_add" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 

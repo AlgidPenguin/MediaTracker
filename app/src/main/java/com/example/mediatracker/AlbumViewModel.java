@@ -28,7 +28,7 @@ public class AlbumViewModel extends AndroidViewModel {
     MutableLiveData<List<Album>> getSearchResults() {
         return searchResults;
     }
-    LiveData<List<Album>> getAlbums() {
+    LiveData<List<Album>> getAlbumsLive() {
         return albums;
     }
     public void addAlbum(Album album) {
