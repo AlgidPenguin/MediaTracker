@@ -5,8 +5,10 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity(tableName = "Albums")
-public class Album {
+public class Album implements Serializable {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "albumId")
     private int id;

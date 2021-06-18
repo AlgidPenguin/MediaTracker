@@ -1,5 +1,6 @@
 package com.example.mediatracker;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,23 +11,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
-//    private String[] albumName = {"Big Wave", "After 5 Clash", "Kind Of Blue", "Bobby Caldwell",
-//            "Street Songs", "Gunfighter Ballads and Trailsongs"};
-//
-//    private String[] artist = {"Tatsuro Yamashita", "Toshiki Kadomatsu", "Miles Davis",
-//            "Bobby Caldwell", "Rick James", "Marty Robbins"};
-//
-//    private String[] format = {"CD", "LP", "LP", "LP", "LP", "LP"};
-
     private List<Album> albumList;
+    private AlbumListener globalAlbumListener;
 
-
+     public RecyclerAdapter(AlbumListener albumListener) {
+         this.globalAlbumListener = albumListener;
+     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.media_layout, viewGroup, false);
-        ViewHolder viewHolder = new ViewHolder(v);
+        ViewHolder viewHolder = new ViewHolder(v, globalAlbumListener);
         return viewHolder;
     }
 
@@ -51,16 +47,40 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         notifyDataSetChanged();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    public List<Album> getAlbumList() {
+         return albumList;
+    }
+
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView itemTitle;
         TextView itemArtist;
         TextView itemFormat;
 
-        ViewHolder(View itemView) {
+        AlbumListener albumListener;
+
+        ViewHolder(View itemView, AlbumListener albumListener ) {
             super(itemView);
             itemTitle = itemView.findViewById(R.id.album_title);
             itemArtist = itemView.findViewById(R.id.album_artist);
             itemFormat = itemView.findViewById(R.id.album_format);
+
+            this.albumListener = albumListener;
+            itemView.setOnClickListener(this);
+        }
+
+
+        @Override
+        public void onClick(View v) {
+            albumListener.albumClick(albumList.get(getAdapterPosition()));
         }
     }
+
+    public interface AlbumListener {
+        void albumClick(Album album);
+    }
+
+//    public void toViewAlbumActivity() {
+//        Intent intent = new Intent(this, ViewAlbumActivity.class);
+//        startActivity(intent);
+//    }
 }

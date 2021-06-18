@@ -3,10 +3,12 @@ package com.example.mediatracker;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import androidx.lifecycle.Observer;
@@ -17,7 +19,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements RecyclerAdapter.AlbumListener{
     private AlbumViewModel albumViewModel;
     private RecyclerView mediaList;
     private RecyclerView.LayoutManager layoutManager;
@@ -43,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         albumViewModel = new ViewModelProvider(this).get(AlbumViewModel.class);
-        albumViewModel.deleteAlbum(7);
+        //albumViewModel.deleteAlbum(7);
         //Album tatsuro = new Album("Big Wave", "Tatsuro Yamashita", "CD", 83);
         //albumViewModel.addAlbum(tatsuro);
 
@@ -54,12 +56,12 @@ public class MainActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         mediaList.setLayoutManager(layoutManager);
 
-        RecyclerAdapter recyclerAdapter = new RecyclerAdapter();
+        RecyclerAdapter recyclerAdapter = new RecyclerAdapter(this);
         mediaList.setAdapter(recyclerAdapter);
 
-        albumTitle = findViewById(R.id.album_title);
-        albumArtist = findViewById(R.id.album_artist);
-        albumFormat = findViewById(R.id.album_format);
+//        albumTitle = findViewById(R.id.album_title);
+//        albumArtist = findViewById(R.id.album_artist);
+//        albumFormat = findViewById(R.id.album_format);
 
         albumViewModel.getAlbumsLive().observe(this, new Observer<List<Album>>() {
             @Override
@@ -67,11 +69,18 @@ public class MainActivity extends AppCompatActivity {
                 recyclerAdapter.setAlbumList(albums);
             }
         });
-//        listenerSetup();
+
     }
 
     public void toAddActivity() {
         Intent intent = new Intent(this, AddAlbumActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void albumClick(Album album) {
+        Intent intent = new Intent(this, ViewAlbumActivity.class);
+        intent.putExtra("album", album);
         startActivity(intent);
     }
 }

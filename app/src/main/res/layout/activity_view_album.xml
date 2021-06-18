@@ -39,7 +39,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="48dp"
                 android:layout_marginTop="11dp"
-                android:text="Add Album"
                 android:textSize="24sp" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -51,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
         android:layout_marginTop="136dp"
-        android:text="Title"
+        android:text="Title:"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appbar" />
@@ -61,11 +60,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="75dp"
-        android:layout_marginBottom="38dp"
-        android:text="Artist"
+        android:layout_marginTop="49dp"
+        android:text="Artist:"
         android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/albumFormat"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/albumTitle" />
 
     <TextView
         android:id="@+id/albumFormat"
@@ -73,7 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="62dp"
         android:layout_marginBottom="40dp"
-        android:text="Format"
+        android:text="Format:"
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/albumRuntime"
         app:layout_constraintStart_toStartOf="parent" />
@@ -84,74 +83,53 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="53dp"
         android:layout_marginBottom="304dp"
-        android:text="Runtime"
+        android:text="Runtime:"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/albumTitleInput"
-        android:layout_width="197dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="133dp"
-        android:layout_marginEnd="67dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textSize="16dp"
+    <TextView
+        android:id="@+id/albumViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="136dp"
+        android:layout_marginEnd="156dp"
+        android:text="albumTitle"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appbar" />
 
-    <EditText
-        android:id="@+id/albumArtistInput"
-        android:layout_width="197dp"
-        android:layout_height="39dp"
-        android:layout_marginEnd="67dp"
-        android:layout_marginBottom="27dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/albumFormatInput"
+    <TextView
+        android:id="@+id/albumViewArtist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="144dp"
+        android:layout_marginBottom="39dp"
+        android:text="albumArtist"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/albumViewFormat"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <EditText
-        android:id="@+id/albumFormatInput"
-        android:layout_width="197dp"
-        android:layout_height="39dp"
-        android:layout_marginEnd="67dp"
-        android:layout_marginBottom="27dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/albumRuntimeInput"
+    <TextView
+        android:id="@+id/albumViewFormat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="129dp"
+        android:layout_marginBottom="40dp"
+        android:text="albumFormat"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/albumViewRuntime"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <EditText
-        android:id="@+id/albumRuntimeInput"
-        android:layout_width="197dp"
-        android:layout_height="39dp"
-        android:layout_marginEnd="67dp"
-        android:layout_marginBottom="54dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/addAlbumButton"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/addAlbumButton"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_width="105dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="153dp"
-        android:layout_marginEnd="153dp"
-        android:layout_marginBottom="193dp"
-        android:background="#9C9C9C"
-        android:onClick="addAlbum"
-        android:text="Add Album"
-        android:textColor="#2E2E2E"
+    <TextView
+        android:id="@+id/albumViewRuntime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="120dp"
+        android:layout_marginBottom="304dp"
+        android:text="albumRuntime"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
