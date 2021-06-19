@@ -2,11 +2,17 @@ package com.example.mediatracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class ViewAlbumActivity extends AppCompatActivity {
+
+    AlbumViewModel albumViewModel = new AlbumViewModel(this.getApplication());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,5 +39,20 @@ public class ViewAlbumActivity extends AppCompatActivity {
 
         TextView viewAlbumRuntime = findViewById(R.id.albumViewRuntime);
         viewAlbumRuntime.setText(Integer.toString(albumToDisplay.getRuntime()));
+
+        Button deleteAlbum = findViewById(R.id.deleteAlbumButton);
+        deleteAlbum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteAlbumById(albumToDisplay.getId());
+            }
+        });
+    }
+
+    public void deleteAlbumById(int id) {
+        albumViewModel.deleteAlbum(id);
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
