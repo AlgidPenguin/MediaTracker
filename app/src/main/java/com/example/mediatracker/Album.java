@@ -16,7 +16,6 @@ public class Album implements Serializable {
     private String title;
     private String artist;
     private String format;
-    // private int count;
     private int runtime;
 
     public Album(String title, String artist, String format, int runtime) {
@@ -24,7 +23,6 @@ public class Album implements Serializable {
         this.title = title;
         this.artist = artist;
         this.format = format;
-        // this.count = count;
         this.runtime = runtime;
     }
 
@@ -44,8 +42,6 @@ public class Album implements Serializable {
         this.format = format;
     }
 
-    //void setCount(int count) { this.count = count;}
-
     void setRuntime(int runtime) {
         this.runtime = runtime;
     }
@@ -64,9 +60,9 @@ public class Album implements Serializable {
         return format;
     }
 
-    //int getCount() {return count;}
-
     int getRuntime() {
         return runtime;
     }
+
+    public String toString() {return title;}
 }

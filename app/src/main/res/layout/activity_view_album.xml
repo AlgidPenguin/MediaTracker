@@ -60,7 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="75dp"
-        android:layout_marginTop="49dp"
+        android:layout_marginTop="38dp"
         android:text="Artist:"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,66 +71,70 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="62dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginTop="38dp"
         android:text="Format:"
         android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/albumRuntime"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/albumArtist" />
 
     <TextView
         android:id="@+id/albumRuntime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="53dp"
+        android:layout_marginTop="38dp"
         android:layout_marginBottom="304dp"
         android:text="Runtime:"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/albumFormat" />
 
     <TextView
         android:id="@+id/albumViewTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="185dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="33dp"
         android:layout_marginTop="136dp"
-        android:layout_marginEnd="156dp"
         android:text="albumTitle"
         android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/albumTitle"
         app:layout_constraintTop_toBottomOf="@+id/appbar" />
 
     <TextView
         android:id="@+id/albumViewArtist"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="144dp"
-        android:layout_marginBottom="39dp"
+        android:layout_width="186dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="17dp"
         android:text="albumArtist"
         android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/albumViewFormat"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/albumArtist"
+        app:layout_constraintTop_toBottomOf="@+id/albumViewTitle" />
 
     <TextView
         android:id="@+id/albumViewFormat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="129dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="14dp"
         android:text="albumFormat"
         android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/albumViewRuntime"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/albumFormat"
+        app:layout_constraintTop_toBottomOf="@+id/albumViewArtist" />
 
     <TextView
         android:id="@+id/albumViewRuntime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="120dp"
-        android:layout_marginBottom="304dp"
+        android:layout_width="135dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginBottom="125dp"
         android:text="albumRuntime"
         android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/deleteAlbumButton"
+        app:layout_constraintStart_toEndOf="@+id/albumRuntime"
+        app:layout_constraintTop_toBottomOf="@+id/albumViewFormat" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/deleteAlbumButton"

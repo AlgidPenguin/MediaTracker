@@ -2,6 +2,8 @@ package com.example.mediatracker;
 
 import android.os.AsyncTask;
 import androidx.lifecycle.MutableLiveData;
+
+import java.util.ArrayList;
 import java.util.List;
 import android.app.Application;
 import androidx.lifecycle.LiveData;
@@ -10,6 +12,7 @@ import androidx.lifecycle.LiveData;
 public class AlbumRepository {
     private final MutableLiveData<List<Album>> searchResults = new MutableLiveData<>();
     private final LiveData<List<Album>> albums;
+    private MutableLiveData<List<Album>> albumsList = new MutableLiveData<>();
     private final AlbumDAO albumDAO;
 
     public AlbumRepository(Application application) {
@@ -17,6 +20,7 @@ public class AlbumRepository {
         db = AlbumRoomDatabase.getDatabase(application);
         albumDAO = db.albumDao();
         albums = albumDAO.getAllAlbums();
+        //albumsList = albumDAO.getAllAlbumsList();
     }
 
     private void asyncFinished(List<Album> resultList) {
@@ -82,6 +86,10 @@ public class AlbumRepository {
 
     public LiveData<List<Album>> getAlbums() {
         return albums;
+    }
+
+    public MutableLiveData<List<Album>> getAlbumsList() {
+        return albumsList;
     }
 
     public MutableLiveData<List<Album>> getSearchResults() {

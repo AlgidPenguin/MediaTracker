@@ -38,7 +38,7 @@ public class ViewAlbumActivity extends AppCompatActivity {
         viewAlbumFormat.setText(albumToDisplay.getFormat());
 
         TextView viewAlbumRuntime = findViewById(R.id.albumViewRuntime);
-        viewAlbumRuntime.setText(Integer.toString(albumToDisplay.getRuntime()));
+        viewAlbumRuntime.setText(Integer.toString(albumToDisplay.getRuntime()) + " min");
 
         Button deleteAlbum = findViewById(R.id.deleteAlbumButton);
         deleteAlbum.setOnClickListener(new View.OnClickListener() {

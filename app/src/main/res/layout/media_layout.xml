@@ -18,10 +18,10 @@
 
         <TextView
             android:id="@+id/album_title"
-            android:layout_width="236dp"
+            android:layout_width="280dp"
             android:layout_height="39dp"
             android:layout_marginStart="5dp"
-            android:textSize="26sp"
+            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

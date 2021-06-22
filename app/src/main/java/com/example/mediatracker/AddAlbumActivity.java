@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
+
 public class AddAlbumActivity extends AppCompatActivity {
 
     private AlbumViewModel albumViewModel;
@@ -51,14 +54,29 @@ public class AddAlbumActivity extends AppCompatActivity {
         format = formatToAdd.getText().toString();
 
         TextView runtimeToAdd = findViewById(R.id.albumRuntimeInput);
-        runtime = Integer.parseInt(runtimeToAdd.getText().toString());
+        try {
+            runtime = Integer.parseInt(runtimeToAdd.getText().toString());
+        }
+        catch (Exception e) {}
 
         Album albumToAdd = new Album(title, artist, format, runtime);
 
+        if(checkInputs(title, artist, format, runtime)) {
+            albumViewModel.addAlbum(albumToAdd);
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
 
-        albumViewModel.addAlbum(albumToAdd);
+        else{
+            String message = "Please enter all data in the text fields.";
+            Snackbar.make(findViewById(R.id.constraintLayout), message, Snackbar.LENGTH_SHORT).show();
+        }
+    }
 
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+    public boolean checkInputs(String title, String artist, String format, Integer runtime) {
+        if((!title.equals("")) && (!artist.equals("")) && (!format.equals("")) && (runtime != null && runtime != 0)) {
+            return true;
+        }
+        return false;
     }
 }
