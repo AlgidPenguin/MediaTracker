@@ -31,6 +31,9 @@ public class ViewAlbumActivity extends AppCompatActivity {
         TextView viewAlbumTitle = findViewById(R.id.albumViewTitle);
         viewAlbumTitle.setText(albumToDisplay.getTitle());
 
+        TextView viewAlbumYear = findViewById(R.id.albumViewYear);
+        viewAlbumYear.setText(Integer.toString(albumToDisplay.getYear()));
+
         TextView viewAlbumArtist = findViewById(R.id.albumViewArtist);
         viewAlbumArtist.setText(albumToDisplay.getArtist());
 
@@ -38,7 +41,7 @@ public class ViewAlbumActivity extends AppCompatActivity {
         viewAlbumFormat.setText(albumToDisplay.getFormat());
 
         TextView viewAlbumRuntime = findViewById(R.id.albumViewRuntime);
-        viewAlbumRuntime.setText(Integer.toString(albumToDisplay.getRuntime()) + " min");
+        viewAlbumRuntime.setText(albumToDisplay.getRuntime() + " min");
 
         Button deleteAlbum = findViewById(R.id.deleteAlbumButton);
         deleteAlbum.setOnClickListener(new View.OnClickListener() {

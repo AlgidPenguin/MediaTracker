@@ -28,12 +28,10 @@ public class MainActivity extends AppCompatActivity implements RecyclerAdapter.A
     private AlbumViewModel albumViewModel;
     private RecyclerView mediaList;
     private RecyclerView.LayoutManager layoutManager;
-    private RecyclerView.Adapter adapter;
 
 
     private Button openAddActivity;
     ArrayAdapter<Album> arrayAdapter;
-    ListView searchResults;
     List<Album> albumSearchList = new ArrayList<>();
 
 
@@ -107,7 +105,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerAdapter.A
             }
         });
 
-
         searchItem.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
             @Override
             public boolean onMenuItemActionExpand(MenuItem item) {
@@ -133,7 +130,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerAdapter.A
             public boolean onQueryTextChange(String newText) {
                 findViewById(R.id.searchResults).setVisibility(View.VISIBLE);
                 arrayAdapter.getFilter().filter(newText);
-                ListView albumSearchResults = findViewById(R.id.searchResults);
                 return true;
             }
         });

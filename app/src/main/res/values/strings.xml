@@ -1,4 +1,23 @@
 <resources>
     <string name="app_name">MediaTracker</string>
     <string name="media_tracker">Media Tracker</string>
+    <string name="albumartist">albumArtist</string>
+    <string name="title">Title:</string>
+    <string name="artist">Artist:</string>
+    <string name="delete">Delete</string>
+    <string name="albumformat">albumFormat</string>
+    <string name="albumtitle">albumTitle</string>
+    <string name="albumruntime">albumRuntime</string>
+    <string name="runtime">Runtime:</string>
+    <string name="format">Format:</string>
+    <string name="textview">TextView</string>
+    <string name="add_album">Add Album</string>
+    <string name="titleForAdd">Title</string>
+    <string name="artistForAdd">Artist</string>
+    <string name="formatForAdd">Format</string>
+    <string name="runtimeForAdd">Runtime</string>
+    <string name="addAlbumButton">Add Album</string>
+    <string name="year">Year</string>
+    <string name="albumYear1">Year:</string>
+    <string name="albumViewYear">albumYear</string>
 </resources>

@@ -47,10 +47,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         notifyDataSetChanged();
     }
 
-    public List<Album> getAlbumList() {
-         return albumList;
-    }
-
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView itemTitle;
         TextView itemArtist;
@@ -78,9 +74,4 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public interface AlbumListener {
         void albumClick(Album album);
     }
-
-//    public void toViewAlbumActivity() {
-//        Intent intent = new Intent(this, ViewAlbumActivity.class);
-//        startActivity(intent);
-//    }
 }

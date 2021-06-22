@@ -10,9 +10,7 @@ import androidx.lifecycle.LiveData;
 
 
 public class AlbumRepository {
-    private final MutableLiveData<List<Album>> searchResults = new MutableLiveData<>();
     private final LiveData<List<Album>> albums;
-    private MutableLiveData<List<Album>> albumsList = new MutableLiveData<>();
     private final AlbumDAO albumDAO;
 
     public AlbumRepository(Application application) {
@@ -20,30 +18,6 @@ public class AlbumRepository {
         db = AlbumRoomDatabase.getDatabase(application);
         albumDAO = db.albumDao();
         albums = albumDAO.getAllAlbums();
-        //albumsList = albumDAO.getAllAlbumsList();
-    }
-
-    private void asyncFinished(List<Album> resultList) {
-        searchResults.setValue(resultList);
-    }
-
-    private static class QueryAsyncTask extends AsyncTask<String, Void, List<Album>> {
-        private final AlbumDAO asyncTaskDao;
-        private AlbumRepository delegate = null;
-
-        QueryAsyncTask(AlbumDAO dao) {
-            asyncTaskDao = dao;
-        }
-
-        @Override
-        protected List<Album> doInBackground(final String... params) {
-            return asyncTaskDao.findAlbum(params[0]);
-        }
-
-        @Override
-        protected void onPostExecute(List<Album> resultList) {
-            delegate.asyncFinished(resultList);
-        }
     }
 
     private static class InsertAsyncTask extends AsyncTask<Album, Void, Void> {
@@ -78,21 +52,8 @@ public class AlbumRepository {
         DeleteAsyncTask task = new DeleteAsyncTask(albumDAO);
         task.execute(id);
     }
-    public void findAlbum(String name) {
-        QueryAsyncTask task = new QueryAsyncTask(albumDAO);
-        task.delegate = this;
-        task.execute(name);
-    }
 
     public LiveData<List<Album>> getAlbums() {
         return albums;
-    }
-
-    public MutableLiveData<List<Album>> getAlbumsList() {
-        return albumsList;
-    }
-
-    public MutableLiveData<List<Album>> getSearchResults() {
-        return searchResults;
     }
 }

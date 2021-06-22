@@ -15,13 +15,15 @@ public class Album implements Serializable {
 
     private String title;
     private String artist;
+    private int year;
     private String format;
     private int runtime;
 
-    public Album(String title, String artist, String format, int runtime) {
+    public Album(String title, String artist, int year, String format, int runtime) {
         this.id = id;
         this.title = title;
         this.artist = artist;
+        this.year = year;
         this.format = format;
         this.runtime = runtime;
     }
@@ -36,6 +38,10 @@ public class Album implements Serializable {
 
     void setArtist(String artist) {
         this.artist = artist;
+    }
+
+    void setArtist(int year) {
+        this.year = year;
     }
 
     void setFormat(String format) {
@@ -54,6 +60,10 @@ public class Album implements Serializable {
 
     String getArtist() {
         return artist;
+    }
+
+    int getYear() {
+        return year;
     }
 
     String getFormat() {

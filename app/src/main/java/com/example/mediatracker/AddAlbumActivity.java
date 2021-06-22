@@ -19,6 +19,7 @@ public class AddAlbumActivity extends AppCompatActivity {
 
     private String title;
     private String artist;
+    private int year;
     private String format;
     private int runtime;
     Button addAlbumButton;
@@ -50,18 +51,21 @@ public class AddAlbumActivity extends AppCompatActivity {
         TextView artistToAdd = findViewById(R.id.albumArtistInput);
         artist = artistToAdd.getText().toString();
 
+        TextView yearToAdd = findViewById(R.id.albumYearInput);
+
         TextView formatToAdd = findViewById(R.id.albumFormatInput);
         format = formatToAdd.getText().toString();
 
         TextView runtimeToAdd = findViewById(R.id.albumRuntimeInput);
         try {
             runtime = Integer.parseInt(runtimeToAdd.getText().toString());
+            year = Integer.parseInt(yearToAdd.getText().toString());
         }
         catch (Exception e) {}
 
-        Album albumToAdd = new Album(title, artist, format, runtime);
+        Album albumToAdd = new Album(title, artist, year, format, runtime);
 
-        if(checkInputs(title, artist, format, runtime)) {
+        if(checkInputs(title, artist, year, format, runtime)) {
             albumViewModel.addAlbum(albumToAdd);
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
@@ -73,8 +77,9 @@ public class AddAlbumActivity extends AppCompatActivity {
         }
     }
 
-    public boolean checkInputs(String title, String artist, String format, Integer runtime) {
-        if((!title.equals("")) && (!artist.equals("")) && (!format.equals("")) && (runtime != null && runtime != 0)) {
+    public boolean checkInputs(String title, String artist, Integer year, String format, Integer runtime) {
+        if((!title.equals("")) && (!artist.equals("")) && (year != null && year != 0) &&
+                    (!format.equals("")) && (runtime != null && runtime != 0)) {
             return true;
         }
         return false;

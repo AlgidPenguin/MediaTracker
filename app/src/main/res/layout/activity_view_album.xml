@@ -37,7 +37,7 @@
                 android:id="@+id/toolbarTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="48dp"
+                android:layout_marginStart="48dp"
                 android:layout_marginTop="11dp"
                 android:textSize="24sp" />
 
@@ -50,8 +50,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
         android:layout_marginTop="136dp"
-        android:text="Title:"
-        android:textSize="20dp"
+        android:text="@string/title"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appbar" />
 
@@ -61,43 +61,19 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="75dp"
         android:layout_marginTop="38dp"
-        android:text="Artist:"
-        android:textSize="20dp"
+        android:text="@string/artist"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/albumTitle" />
-
-    <TextView
-        android:id="@+id/albumFormat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="62dp"
-        android:layout_marginTop="38dp"
-        android:text="Format:"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/albumArtist" />
-
-    <TextView
-        android:id="@+id/albumRuntime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="53dp"
-        android:layout_marginTop="38dp"
-        android:layout_marginBottom="304dp"
-        android:text="Runtime:"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/albumFormat" />
 
     <TextView
         android:id="@+id/albumViewTitle"
         android:layout_width="185dp"
         android:layout_height="49dp"
-        android:layout_marginStart="33dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="136dp"
-        android:text="albumTitle"
-        android:textSize="20dp"
+        android:text="@string/albumtitle"
+        android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/albumTitle"
         app:layout_constraintTop_toBottomOf="@+id/appbar" />
 
@@ -105,36 +81,78 @@
         android:id="@+id/albumViewArtist"
         android:layout_width="186dp"
         android:layout_height="51dp"
-        android:layout_marginStart="33dp"
+        android:layout_marginStart="29dp"
         android:layout_marginTop="17dp"
-        android:text="albumArtist"
-        android:textSize="20dp"
+        android:text="@string/albumartist"
+        android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/albumArtist"
         app:layout_constraintTop_toBottomOf="@+id/albumViewTitle" />
 
     <TextView
-        android:id="@+id/albumViewFormat"
+        android:id="@+id/albumViewYear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="14dp"
-        android:text="albumFormat"
-        android:textSize="20dp"
-        app:layout_constraintStart_toEndOf="@+id/albumFormat"
-        app:layout_constraintTop_toBottomOf="@+id/albumViewArtist" />
+        android:layout_marginStart="29dp"
+        android:layout_marginBottom="29dp"
+        android:text="@string/albumViewYear"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/albumViewFormat"
+        app:layout_constraintStart_toEndOf="@+id/albumYear1" />
+
+    <TextView
+        android:id="@+id/albumFormat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="29dp"
+        android:text="@string/format"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/albumRuntime"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/albumYear1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
+        android:layout_marginBottom="28dp"
+        android:text="@string/albumYear1"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/albumFormat"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/albumViewRuntime"
         android:layout_width="135dp"
         android:layout_height="30dp"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="42dp"
-        android:layout_marginBottom="125dp"
-        android:text="albumRuntime"
-        android:textSize="20dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="77dp"
+        android:text="@string/albumruntime"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/deleteAlbumButton"
-        app:layout_constraintStart_toEndOf="@+id/albumRuntime"
-        app:layout_constraintTop_toBottomOf="@+id/albumViewFormat" />
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/albumViewFormat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="29dp"
+        android:layout_marginBottom="28dp"
+        android:text="@string/albumformat"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/albumViewRuntime"
+        app:layout_constraintStart_toEndOf="@+id/albumFormat" />
+
+    <TextView
+        android:id="@+id/albumRuntime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginBottom="260dp"
+        android:text="@string/runtime"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/deleteAlbumButton"
@@ -144,7 +162,7 @@
         android:layout_marginEnd="162dp"
         android:layout_marginBottom="131dp"
         android:background="#EF2626"
-        android:text="Delete"
+        android:text="@string/delete"
         android:textColor="#E3E3E3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
